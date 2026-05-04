@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import db, User, Product
+import os
 
 
 # Create Flask app
@@ -232,6 +233,7 @@ def delete_product(product_id):
 
 # Run server
 
-if __name__ == "__main__":
 
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
